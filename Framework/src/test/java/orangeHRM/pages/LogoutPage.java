@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import orangeHRM.helper.Utility;
 
+//This is page for Logout
 public class LogoutPage {
 	WebDriver driver;
 	public LogoutPage(WebDriver ldriver)
