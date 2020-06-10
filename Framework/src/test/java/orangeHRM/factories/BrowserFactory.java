@@ -1,0 +1,42 @@
+package orangeHRM.factories;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class BrowserFactory {
+	
+	public static void closeApplication(WebDriver driver)
+	{
+		driver.quit();
+		System.out.println("LOG:INFO- Session Closed ");
+	}
+	
+	
+	
+   public static WebDriver getApplication(String browser,String appURL)
+   {
+	   WebDriver driver = null;
+	   if(browser.equalsIgnoreCase("Chrome"))
+	   {
+		   System.setProperty("webdriver.chrome.driver" , "D:\\Java Programs\\Framework\\Drivers\\chromedriver.exe");
+		   driver=new ChromeDriver();
+	   }
+	   else if(browser.equalsIgnoreCase("FireFox"))
+	   {
+		   System.setProperty("webdriver.gecko.driver" , "C:\\Users\\ssdas\\Documents\\geckodriver-v0.26.0-win64/geckodriver.exe");
+		   driver=new FirefoxDriver();
+	   }
+	   else
+	   {
+		   System.out.println("Sorry we do not support this browser");
+	   }
+	   driver.manage().window().maximize();
+	   driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+	   driver.get(appURL);
+	   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   return driver;
+   }
+}
