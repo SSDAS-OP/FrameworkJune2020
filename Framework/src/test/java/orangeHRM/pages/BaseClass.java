@@ -3,6 +3,7 @@ package orangeHRM.pages;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -24,7 +25,7 @@ import orangeHRM.helper.Utility;
 public class BaseClass {
 	
 	public WebDriver driver;
-	public ExtentReports report;
+	public static ExtentReports report;
 	public ExtentTest logger;
 	
 	@BeforeSuite
@@ -79,8 +80,11 @@ public class BaseClass {
 	public void tearDown()
 	{
 		System.out.println("LOG:INFO- Terminating Browser");
+		//WindowsUtils.killByName("chrome.exe");
 		BrowserFactory.closeApplication(driver);
 		System.out.println("LOG:INFO- Browser Terminated");
 	}
+	
+	
 
 }
