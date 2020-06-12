@@ -44,7 +44,15 @@ public class BaseClass {
 		System.out.println("LOG:INFO- Test Executed - Test status is "+result.getStatus());
 		if(result.getStatus()==ITestResult.SUCCESS)
 		{
-			logger.pass("Test passed");
+			try 
+			{
+				logger.pass("Test passed", MediaEntityBuilder.createScreenCaptureFromPath(Utility.getScreenshot(driver)).build());
+			} 
+			catch (IOException e)
+			{
+				
+				
+			}
 		}
 		else if(result.getStatus()==ITestResult.FAILURE)
 		{
